@@ -1,133 +1,138 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { skills } from '../lib/data';
 
 const allSkills = [
-  { name: 'React.js / Next.js', pct: 90, cat: 'Frontend' },
-  { name: 'Node.js / Express', pct: 85, cat: 'Backend' },
-  { name: 'Spring Boot', pct: 80, cat: 'Backend' },
-  { name: 'PostgreSQL / MySQL', pct: 85, cat: 'Database' },
-  { name: 'Laravel / Django', pct: 78, cat: 'Backend' },
-  { name: 'Docker / Git', pct: 75, cat: 'DevOps' },
-  { name: 'JavaScript / TypeScript', pct: 88, cat: 'Language' },
-  { name: 'Java / Python', pct: 80, cat: 'Language' },
-  { name: 'Flask / Angular', pct: 70, cat: 'Frontend' },
-  { name: 'API REST / UML', pct: 85, cat: 'Architecture' },
+  { name: 'React.js / Next.js',      pct: 90, cat: 'Frontend',     color: '#61dafb' },
+  { name: 'Node.js / Express',       pct: 85, cat: 'Backend',      color: '#86efac' },
+  { name: 'Spring Boot',             pct: 80, cat: 'Backend',      color: '#6ee7b7' },
+  { name: 'PostgreSQL / MySQL',      pct: 85, cat: 'Database',     color: '#a5b4fc' },
+  { name: 'Laravel / Django',        pct: 78, cat: 'Backend',      color: '#fca5a5' },
+  { name: 'JavaScript / TypeScript', pct: 88, cat: 'Language',     color: '#fde68a' },
+  { name: 'Docker / Git',            pct: 75, cat: 'DevOps',       color: '#7dd3fc' },
+  { name: 'Java / Python',           pct: 80, cat: 'Language',     color: '#c4b5fd' },
 ];
 
-function SkillBar({ skill, index }) {
+function AnimatedBar({ skill, visible, index }) {
   return (
-    <div className={`reveal delay-${Math.min(index + 1, 5)}`} style={{ marginBottom: '24px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <span style={{ color: 'var(--white)', fontSize: '12px' }}>{skill.name}</span>
+    <div className={`reveal delay-${Math.min(index + 1, 6)}`} style={{ marginBottom: '22px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{
+            width: '6px', height: '6px', borderRadius: '50%',
+            background: skill.color,
+            boxShadow: `0 0 8px ${skill.color}88`,
+          }} />
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--white)' }}>
+            {skill.name}
+          </span>
           <span style={{
-            fontSize: '8px', padding: '2px 8px',
-            border: '1px solid rgba(201,168,76,0.2)',
-            color: 'var(--white-dimmer)', letterSpacing: '0.1em',
+            fontFamily: 'var(--font-mono)', fontSize: '8px',
+            padding: '2px 8px',
+            border: `1px solid ${skill.color}33`,
+            color: skill.color, opacity: 0.7,
+            letterSpacing: '0.1em',
           }}>{skill.cat}</span>
         </div>
-        <span style={{ fontSize: '11px', color: 'var(--gold)', fontFamily: 'var(--font-mono)' }}>
-          {skill.pct}%
-        </span>
+        <span style={{
+          fontFamily: 'var(--font-mono)', fontSize: '11px',
+          color: 'var(--gold)',
+        }}>{skill.pct}%</span>
       </div>
-      <div style={{
-        height: '1px', background: 'rgba(255,255,255,0.05)',
-        position: 'relative', overflow: 'visible',
-      }}>
-        <div style={{
-          height: '1px',
-          width: `${skill.pct}%`,
-          background: 'linear-gradient(90deg, var(--gold), var(--gold-light))',
-          position: 'relative',
-        }}>
-          <div style={{
-            position: 'absolute', right: 0, top: '-3px',
-            width: '7px', height: '7px',
-            borderRadius: '50%',
-            background: 'var(--gold)',
-            boxShadow: '0 0 8px var(--gold)',
-          }} />
-        </div>
+
+      <div className="skill-track">
+        <div
+          className="skill-fill"
+          style={{
+            width: visible ? `${skill.pct}%` : '0%',
+            transition: `width 1.2s cubic-bezier(.16,1,.3,1) ${index * 80}ms`,
+            background: `linear-gradient(90deg, ${skill.color}88, ${skill.color})`,
+          }}
+        />
       </div>
     </div>
   );
 }
 
 export default function Skills() {
-  const [activeTag, setActiveTag] = useState(null);
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const stackGroups = [
-    {
-      label: 'Langages',
-      items: skills.languages,
-      icon: '{ }',
-    },
-    {
-      label: 'Frameworks',
-      items: skills.frameworks,
-      icon: '⬡',
-    },
-    {
-      label: 'Bases de Données',
-      items: skills.databases,
-      icon: '◈',
-    },
-    {
-      label: 'Outils',
-      items: skills.tools,
-      icon: '⚙',
-    },
+    { label: 'Langages', items: skills.languages, icon: '{ }', color: '#fde68a' },
+    { label: 'Frameworks', items: skills.frameworks, icon: '⬡', color: '#a5b4fc' },
+    { label: 'Bases de Données', items: skills.databases, icon: '◈', color: '#86efac' },
+    { label: 'Outils & Méthodes', items: skills.tools, icon: '⚙', color: '#7dd3fc' },
   ];
 
   return (
-    <section id="skills" style={{
-      padding: '120px 40px',
-      maxWidth: '1400px', margin: '0 auto',
+    <section id="skills" ref={sectionRef} style={{
+      padding: '140px 6vw',
+      maxWidth: '1500px', margin: '0 auto',
+      position: 'relative',
     }}>
+      {/* BG GLOW */}
+      <div style={{
+        position: 'absolute', bottom: '10%', left: '-5%',
+        width: '400px', height: '400px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+
       {/* HEADER */}
-      <div className="reveal" style={{ marginBottom: '80px', display: 'flex', alignItems: 'center', gap: '24px' }}>
-        <div style={{
+      <div className="reveal" style={{ marginBottom: '80px' }}>
+        <p className="section-label" style={{ marginBottom: '14px' }}>// Mon Arsenal</p>
+        <h2 style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(80px, 12vw, 160px)',
-          fontWeight: 200,
-          color: 'transparent',
-          WebkitTextStroke: '1px rgba(201,168,76,0.1)',
-          lineHeight: 1,
-          userSelect: 'none',
-        }}>05</div>
-        <div>
-          <p className="section-label" style={{ marginBottom: '8px' }}>Mon Arsenal Tech</p>
-          <h2 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(32px, 5vw, 64px)',
-            fontWeight: 300, lineHeight: 1.1,
-          }}>Compétences</h2>
-        </div>
+          fontSize: 'clamp(42px, 6vw, 80px)',
+          fontWeight: 300, lineHeight: 1.05,
+        }}>
+          Compétences<span style={{ color: 'var(--gold)' }}>.</span>
+        </h2>
+        <div style={{ width: '60px', height: '1px', background: 'linear-gradient(90deg, var(--gold), transparent)', marginTop: '20px' }} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px' }}>
 
-        {/* LEFT — SKILL BARS */}
+        {/* LEFT — ANIMATED BARS */}
         <div>
-          <p className="section-label reveal" style={{ marginBottom: '40px' }}>Niveau de Maîtrise</p>
-          {allSkills.map((s, i) => <SkillBar key={s.name} skill={s} index={i} />)}
+          <p className="section-label reveal" style={{ marginBottom: '36px' }}>Niveau de Maîtrise</p>
+          {allSkills.map((s, i) => (
+            <AnimatedBar key={s.name} skill={s} visible={visible} index={i} />
+          ))}
         </div>
 
-        {/* RIGHT — STACK GRID */}
+        {/* RIGHT — STACK */}
         <div>
-          <p className="section-label reveal" style={{ marginBottom: '40px' }}>Stack Technologique</p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
+          <p className="section-label reveal" style={{ marginBottom: '36px' }}>Stack Technologique</p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {stackGroups.map((group, gi) => (
               <div key={group.label} className={`reveal delay-${gi + 1}`}>
                 <div style={{
                   display: 'flex', alignItems: 'center', gap: '12px',
-                  marginBottom: '16px',
+                  marginBottom: '14px',
                 }}>
-                  <span style={{ color: 'var(--gold)', fontFamily: 'var(--font-mono)', fontSize: '14px' }}>
-                    {group.icon}
-                  </span>
-                  <span className="section-label">{group.label}</span>
+                  <span style={{
+                    fontFamily: 'var(--font-mono)', fontSize: '16px',
+                    color: group.color,
+                    textShadow: `0 0 10px ${group.color}66`,
+                  }}>{group.icon}</span>
+                  <span style={{
+                    fontFamily: 'var(--font-mono)', fontSize: '9px',
+                    letterSpacing: '0.3em', textTransform: 'uppercase',
+                    color: group.color, opacity: 0.8,
+                  }}>{group.label}</span>
+                  <div style={{ flex: 1, height: '1px', background: `linear-gradient(90deg, ${group.color}33, transparent)` }} />
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                   {group.items.map(item => (
@@ -135,14 +140,20 @@ export default function Skills() {
                       key={item}
                       className="tech-tag"
                       data-hover
-                      onClick={() => setActiveTag(activeTag === item ? null : item)}
                       style={{
+                        borderColor: `${group.color}33`,
+                        color: group.color,
                         cursor: 'none',
-                        background: activeTag === item ? 'rgba(201,168,76,0.12)' : 'transparent',
-                        borderColor: activeTag === item ? 'rgba(201,168,76,0.5)' : 'rgba(201,168,76,0.2)',
-                        transition: 'all 0.2s ease',
-                        padding: '6px 14px',
-                        fontSize: '10px',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = `${group.color}15`;
+                        e.currentTarget.style.borderColor = `${group.color}66`;
+                        e.currentTarget.style.boxShadow = `0 0 12px ${group.color}22`;
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = 'rgba(201,168,76,0.04)';
+                        e.currentTarget.style.borderColor = `${group.color}33`;
+                        e.currentTarget.style.boxShadow = 'none';
                       }}
                     >
                       {item}
@@ -153,33 +164,38 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* DECORATION */}
+          {/* LEARNING CARD */}
           <div className="reveal delay-5" style={{
-            marginTop: '48px',
-            padding: '28px',
-            border: '1px solid rgba(201,168,76,0.1)',
-            background: 'linear-gradient(135deg, rgba(201,168,76,0.04), transparent)',
+            marginTop: '40px', padding: '24px 28px',
+            background: 'linear-gradient(135deg, rgba(74,108,247,0.06), rgba(124,58,237,0.04))',
+            border: '1px solid rgba(74,108,247,0.15)',
             position: 'relative', overflow: 'hidden',
           }}>
             <div style={{
-              position: 'absolute', top: '-30px', right: '-20px',
-              fontFamily: 'var(--font-display)',
-              fontSize: '100px', fontWeight: 200,
-              color: 'transparent',
-              WebkitTextStroke: '1px rgba(201,168,76,0.06)',
+              position: 'absolute', top: '-15px', right: '-15px',
+              fontFamily: 'var(--font-display)', fontSize: '70px', fontWeight: 200,
+              color: 'transparent', WebkitTextStroke: '1px rgba(74,108,247,0.1)',
               userSelect: 'none',
             }}>∞</div>
-            <p className="section-label" style={{ marginBottom: '12px' }}>En apprentissage continu</p>
-            <p style={{ fontSize: '12px', color: 'var(--white-dim)', lineHeight: 2 }}>
-              Cybersécurité · Cloud · DevOps avancé · Intelligence Artificielle
-            </p>
+            <p className="section-label" style={{ color: '#7dd3fc', marginBottom: '10px' }}>En apprentissage</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {['Cybersécurité', 'Cloud AWS', 'DevOps', 'IA / ML'].map(s => (
+                <span key={s} style={{
+                  fontFamily: 'var(--font-mono)', fontSize: '9px',
+                  padding: '4px 12px',
+                  border: '1px solid rgba(74,108,247,0.2)',
+                  color: '#7dd3fc', background: 'rgba(74,108,247,0.06)',
+                  letterSpacing: '0.12em',
+                }}>{s}</span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 900px) {
-          #skills > div:last-child { grid-template-columns: 1fr !important; }
+          #skills > div:last-child { grid-template-columns: 1fr !important; gap: 48px !important; }
         }
       `}</style>
     </section>
