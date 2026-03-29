@@ -8,7 +8,7 @@ export const personal = {
   birthdate: "07 juillet 2004",
   nationality: "Marocaine",
   cv: "/cv.pdf",
-  image: "/images/profile.jpg",
+  image: "/images/profile.png",
   github: "https://github.com/assia769",
   linkedin: "https://www.linkedin.com/in/assia-houbbadi-6726b0272/",
   tagline: "Je construis des expériences digitales qui changent le monde.",
@@ -44,7 +44,8 @@ export const experiences = [
     location: "Khmisset",
     role: "Stage de Fin d'Année",
     period: "Juil – Août 2025",
-    description: "Conception, développement et déploiement d'une plateforme complète de gestion de cabinet médical.",
+    description:
+      "Conception, développement et déploiement d'une plateforme complète de gestion de cabinet médical.",
     tags: ["Node.js", "Express", "PostgreSQL", "React"],
     bullets: [
       "Application full stack : gestion patients, médecins, rendez-vous",
@@ -57,7 +58,8 @@ export const experiences = [
     location: "Fkih Ben Saleh",
     role: "Stage d'Initiation",
     period: "Juillet 2024",
-    description: "Développement d'une plateforme web de vente et gestion de bovins dans le milieu industriel agri.",
+    description:
+      "Développement d'une plateforme web de vente et gestion de bovins dans le milieu industriel agri.",
     tags: ["HTML", "CSS", "JavaScript"],
     bullets: [
       "Application web de gestion du bétail",
@@ -68,12 +70,15 @@ export const experiences = [
 ];
 
 export const projects = [
+  // ─── FEATURED ────────────────────────────────────────────
   {
     title: "DFCraft",
     subtitle: "Website & Extension Next.js",
-    description: "Mon premier projet personnel déployé — un website et une extension Next.js que j'ai conçus et déployés en production en 2026.",
+    description:
+      "Mon premier projet personnel déployé — un website et une extension Next.js que j'ai conçus et déployés en production en 2026.",
     tags: ["Next.js", "TypeScript", "Extension Chrome"],
     images: ["/images/dfcraft/1.png", "/images/dfcraft/2.png"],
+    video: null,
     featured: true,
     year: "2026",
     link: "#",
@@ -81,73 +86,125 @@ export const projects = [
   {
     title: "Marinova",
     subtitle: "Hult Prize 2026 — 2nd Runner Up 🏆",
-    description: "Projet innovant de réutilisation des sardines. 3ème prix au Hult Prize 2026 — solution durable pour valoriser les déchets de pêche en produits à haute valeur ajoutée.",
+    description:
+      "Projet innovant de réutilisation des sardines. 3ème prix au Hult Prize 2026 — solution durable pour valoriser les déchets de pêche en produits à haute valeur ajoutée.",
     tags: ["Innovation", "Durabilité", "Entrepreneuriat"],
-    images: ["/images/marinova/1.png", "/images/marinova/2.png", "/images/marinova/3.png"],
+    images: [
+      "/images/marinova/0.png",
+      "/images/marinova/1.png",
+      "/images/marinova/2.png",
+      "/images/marinova/3.png",
+    ],
+    video: null,
     featured: true,
     year: "2026",
     prize: "🥉 2nd Runner Up — Hult Prize 2026",
   },
+
+  // ─── AUTRES PROJETS AVEC VIDÉOS ──────────────────────────
   {
-    title: "Cabinet Médical",
-    subtitle: "Full Stack App",
-    description: "Plateforme complète de gestion de cabinet médical avec gestion patients, médecins, rendez-vous, authentification et rôles.",
+    title: "Cabinet Médical — Assojet",
+    subtitle: "Full Stack App · Stage Fin d'Année",
+    description:
+      "Plateforme complète de gestion de cabinet médical déployée en production : gestion patients, médecins, rendez-vous, authentification et rôles.",
+    tags: ["Node.js", "Express", "PostgreSQL", "React"],
+    images: [],
+    video: "/videos/assojet.mp4",
+    featured: false,
+    year: "2025",
+  },
+  {
+    title: "Medicore",
+    subtitle: "Cabinet Médical · Spring Boot",
+    description:
+      "Application académique de gestion de cabinet médical avec Spring Boot, PostgreSQL et React — gestion avancée des rôles médecin / patient / admin.",
     tags: ["Spring Boot", "PostgreSQL", "React"],
     images: [],
+    video: "/videos/Medicore.mp4",
+    featured: false,
+    year: "2025",
+  },
+  {
+    title: "Alkhawarizmi",
+    subtitle: "Apprendre l'algorithme de Prim",
+    description:
+      "Plateforme d'apprentissage de l'algorithme de Prim avec visualisation interactive, quiz d'évaluation et intégration LLM dans le processus d'apprentissage.",
+    tags: ["Next.js", "React", "LLM"],
+    images: [],
+    video: "/videos/prime.mp4",
     featured: false,
     year: "2025",
   },
   {
     title: "Yalah ntaybo",
-    subtitle: "Recette marocaine : Réseau Social Culinaire",
-    description: "Plateforme de publication, notation et commentaires de recettes marocaines avec profils utilisateurs.",
+    subtitle: "Réseau Social Culinaire Marocain",
+    description:
+      "Plateforme de publication, notation et commentaires de recettes marocaines avec profils utilisateurs.",
     tags: ["Laravel", "React"],
     images: [],
-    featured: false,
-    year: "2024",
-  },
-  {
-    title: "Alkhawarizmi",
-    subtitle: "apprendre algorithme de prim",
-    description: "Plateforme d'apprentissage de l'algorithme de Prim avec visualisation interactive et quiz d'évaluation tout en intégrant le llm dans le process d'apprentissage.",
-    tags: ["next js", "React"],
-    images: [],
+    video: "/videos/yalah_ntaybo.mp4",
     featured: false,
     year: "2024",
   },
   {
     title: "Gestion Hôtel",
     subtitle: "Application Desktop",
-    description: "Application desktop de gestion hôtelière : réservations, gestion clients et facturation.",
+    description:
+      "Application desktop de gestion hôtelière : réservations, gestion clients et facturation.",
     tags: ["Java", "JavaFX"],
-    images: [],
+    images: ["/images/projets/h1.png", "/images/projets/h2.png", "/images/projets/h3.png"],
+    video: null,
     featured: false,
     year: "2024",
   },
   {
     title: "Gestion Bibliothèque",
     subtitle: "Web App",
-    description: "Système de gestion de bibliothèque avec authentification, emprunts et gestion des ouvrages.",
+    description:
+      "Système de gestion de bibliothèque avec authentification, emprunts et gestion des ouvrages.",
     tags: ["Flask", "SQLite"],
     images: [],
+    video: ["/videos/ennajii.mp4"],
     featured: false,
     year: "2024",
   },
   {
     title: "AquaGazen",
     subtitle: "Hult Prize 2025",
-    description: "Installation innovante de réutilisation des eaux usées — projet Hult Prize 2025.",
+    description:
+      "Installation innovante de réutilisation des eaux usées — projet Hult Prize 2025.",
     tags: ["Django", "MySQL"],
-    images: [],
+    images: ["/images/events/hultprize/1.png", "/images/events/hultprize/2.png", "/images/events/hultprize/3.png","/images/events/hultprize/4.png","/images/events/hultprize/5.png"],
+    video: null,
     featured: false,
     year: "2025",
     prize: "Hult Prize 2025",
+  },
+  {
+    title: "Bovins Auction",
+    subtitle: "projet de stage d'initiation en Jibal",
+    description:
+      "Développement d'une plateforme web de vente et gestion de bovins dans le milieu industriel agri.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    images: ["/images/projets/j1.png", "/images/projets/j2.png", "/images/projets/j3.png"],
+    video: null,
+    featured: false,
+    year: "2024",
   },
 ];
 
 export const skills = {
   languages: ["Java", "Python", "PHP", "C++", "SQL", "JavaScript", "TypeScript"],
-  frameworks: ["Spring Boot", "Django", "Laravel", "Flask", "React.js", "Next.js", "Angular", "Node.js"],
+  frameworks: [
+    "Spring Boot",
+    "Django",
+    "Laravel",
+    "Flask",
+    "React.js",
+    "Next.js",
+    "Angular",
+    "Node.js",
+  ],
   databases: ["PostgreSQL", "MySQL", "Oracle", "SQLite"],
   tools: ["Docker", "Git", "API REST", "UML", "MVC"],
 };
@@ -238,26 +295,19 @@ export const certifications = [
     title: "Cellule Technique — Open Source",
     org: "Événement Open Source · 2025",
     year: "2025",
-    image: "/images/certifs/open-source-tech.png", //ajouter image.png aussi c'est une certif
+    image: "/images/certifs/open-source-tech.png",
     category: "Technique",
     highlight: false,
   },
   {
-    title: "Attestation de Stage — Assojet",
+    title: "Attestation de Réference — Assojet",
     org: "Assojet, Khmisset · 2025",
     year: "2025",
-    image: "/images/certifs/assojet.png",
+    image: "/images/certifs/assojet.jpg",
     category: "Stage",
     highlight: false,
   },
-  {
-    title: "Attestation de Stage — Jibal",
-    org: "Polmlek / Jibal · 2024",
-    year: "2024",
-    image: "/images/certifs/jibal.png",
-    category: "Stage",
-    highlight: false,
-  },
+  
   {
     title: "Excellence — 1ère en 1ère Année Bac",
     org: "Lycée Al Kindi",

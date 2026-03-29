@@ -177,7 +177,6 @@ function CertCard({ cert, index, onClick }) {
 
   return (
     <div
-      className={`reveal delay-${Math.min(index % 6 + 1, 5)}`}
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
