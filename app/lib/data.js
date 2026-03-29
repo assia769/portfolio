@@ -225,7 +225,7 @@ export const activities = [
   {
     year: "2025",
     role: "Animatrice",
-    org: "Événement Sanitaire v2.0 — Club EPIC",
+    org: "Événement Sanitaire v2.0  et v.3 — Club EPIC",
     image: "/images/events/sanitaire-20/1.png",
   },
   {
@@ -248,6 +248,14 @@ export const certifications = [
     org: "Hult Prize 2026 · Marinova",
     year: "2026",
     image: "/images/certifs/hult-2026.png",
+    category: "Prix",
+    highlight: true,
+  },
+  {
+    title: "présentation devant les jurys",
+    org: "Hult Prize 2026 ",
+    year: "2026",
+    image: "/images/certifs/mari.png",
     category: "Prix",
     highlight: true,
   },
@@ -299,6 +307,14 @@ export const certifications = [
     category: "Technique",
     highlight: false,
   },
+   {
+    title: "Membre de l'équipe organisation",
+    org: "Événement Open Source · 2025",
+    year: "2025",
+    image: "/images/certifs/os.png",
+    category: "leadership",
+    highlight: false,
+  },
   {
     title: "Attestation de Réference — Assojet",
     org: "Assojet, Khmisset · 2025",
@@ -321,6 +337,14 @@ export const certifications = [
     org: "Collège · Encadrement Profs de Français",
     year: "2019",
     image: "/images/certifs/college-journal.png",
+    category: "Créatif",
+    highlight: false,
+  },
+   {
+    title: "Journal Scolaire - Réussite académique ",
+    org: "Collège ",
+    year: "2019",
+    image: "/images/certifs/college.png",
     category: "Créatif",
     highlight: false,
   },

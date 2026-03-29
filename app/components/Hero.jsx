@@ -7,6 +7,8 @@ const ROLES = [
   'Ingénieure Informatique',
   'Leader & Innovatrice',
   '2nd Runner Up — Hult Prize 2026',
+  'Chef de la cellule organisation - Open Source 2026',
+  'Animatrice des évènements',
   'Chef de Projets',
 ];
 
@@ -32,7 +34,7 @@ function CodeBlock({ visible }) {
     { delay: 0,   content: [{ t: 'keyword', v: 'const ' }, { t: 'var', v: 'assia' }, { t: 'dim', v: ' = {' }] },
     { delay: 120, content: [{ t: 'dim', v: '  ' }, { t: 'prop', v: 'role' }, { t: 'dim', v: ': ' }, { t: 'string', v: '"Full Stack Engineer"' }, { t: 'dim', v: ',' }] },
     { delay: 240, content: [{ t: 'dim', v: '  ' }, { t: 'prop', v: 'school' }, { t: 'dim', v: ': ' }, { t: 'string', v: '"ENSAKH Khouribga"' }, { t: 'dim', v: ',' }] },
-    { delay: 360, content: [{ t: 'dim', v: '  ' }, { t: 'prop', v: 'stack' }, { t: 'dim', v: ': [' }, { t: 'blue', v: '"React"' }, { t: 'dim', v: ', ' }, { t: 'blue', v: '"Next.js"' }, { t: 'dim', v: ', ' }, { t: 'blue', v: '"Spring"' }, { t: 'dim', v: '],' }] },
+    { delay: 360, content: [{ t: 'dim', v: '  ' }, { t: 'prop', v: 'stack' }, { t: 'dim', v: ': [' }, { t: 'blue', v: '"React"' }, { t: 'dim', v: ', ' }, { t: 'blue', v: '"Next.js"' }, { t: 'dim', v: ', ' }, { t: 'blue', v: '"Spring"' }, { t: 'blue', v: '"..."' },{ t: 'dim', v: '],' }] },
     { delay: 480, content: [{ t: 'dim', v: '  ' }, { t: 'prop', v: 'award' }, { t: 'dim', v: ': ' }, { t: 'string', v: '"🥉 Hult Prize 2026"' }, { t: 'dim', v: ',' }] },
     { delay: 600, content: [{ t: 'dim', v: '  ' }, { t: 'prop', v: 'passion' }, { t: 'dim', v: ': ' }, { t: 'green', v: 'true' }, { t: 'dim', v: ',' }] },
     { delay: 720, content: [{ t: 'dim', v: '};' }] },

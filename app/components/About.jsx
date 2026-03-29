@@ -144,27 +144,36 @@ export default function About() {
         <div>
           {/* BIO */}
           <div className="reveal delay-1" style={{ marginBottom: '48px' }}>
-            <p style={{
+           <p style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(13px, 1.2vw, 15px)',
-              color: 'var(--white-dim)', lineHeight: 2.1,
+              color: 'var(--white-dim)',
+              lineHeight: 2.1,
               marginBottom: '20px',
             }}>
-              Je suis <span style={{ color: 'var(--white)', fontWeight: 500 }}>Assia Houbbadi</span>,
-              étudiante en Cycle Ingénieur Génie Informatique à l'
-              <span style={{ color: 'var(--gold)' }}>ENSAKH de Khouribga</span>.
-              Passionnée par le développement full stack, je transforme des idées complexes
-              en expériences digitales élégantes et performantes.
+              Je suis <span style={{ color: 'var(--white)', fontWeight: 600 }}>Assia Houbbadi</span>, 
+              étudiante en Cycle Ingénieur en Génie Informatique, option SCIL
+              <span style={{ color: 'var(--gold)', fontWeight: 500 }}> :Sécurité, Cloud & Ingénierie Logicielle </span> 
+              à l’ENSA Khouribga
+              <br /><br />
+              Animée par une forte passion pour la 
+              <span style={{ color: 'var(--white)', fontWeight: 500 }}> cybersécurité </span> 
+              et le 
+              <span style={{ color: 'var(--white)', fontWeight: 500 }}> développement logiciel </span>, 
+              je m’engage à concevoir des solutions digitales à la fois 
+              <span style={{ color: 'var(--white)' }}> sécurisées</span>, 
+              <span style={{ color: 'var(--white)' }}> performantes</span> et 
+              <span style={{ color: 'var(--white)' }}> élégantes</span>.  
+              Mon objectif est de transformer des idées complexes en expériences innovantes 
+              alliant technologie, fiabilité et impact.
             </p>
             <p style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(13px, 1.2vw, 15px)',
               color: 'var(--white-dim)', lineHeight: 2.1,
             }}>
-              Leader dans l'âme, j'ai eu la chance de diriger des événements,
-              des clubs, et de représenter mon école au <span style={{ color: 'var(--gold)' }}>Hult Prize</span> —
-              où j'ai décroché la <span style={{ color: 'var(--gold)' }}>2ème place</span> avec
-              Marinova, mon projet de réutilisation des sardines en 2026.
+              Leader dans l'âme, j'ai eu la chance d'animer dans des évènements , de diriger des événements,
+              des clubs, et de mener des projets d'innovation sociale en participant dans plusieurs compétitions interne et externe.
             </p>
           </div>
 

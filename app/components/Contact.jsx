@@ -261,8 +261,8 @@ export default function Contact() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   {[
-                    { key: 'name',  label: 'Votre Nom',   type: 'text',  placeholder: 'Marie Dupont' },
-                    { key: 'email', label: 'Votre Email',  type: 'email', placeholder: 'marie@exemple.com' },
+                    { key: 'name',  label: 'Votre Nom',   type: 'text',  placeholder: 'Veuillez tapez votre nom' },
+                    { key: 'email', label: 'Votre Email',  type: 'email', placeholder: 'Veuillez tapez votre gmail' },
                   ].map(({ key, label, type, placeholder }) => (
                     <div key={key}>
                       <p style={{

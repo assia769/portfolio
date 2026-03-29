@@ -4,18 +4,22 @@ import { skills } from '../lib/data';
 
 const allSkills = [
   { name: 'React.js / Next.js',      pct: 90, cat: 'Frontend',     color: '#61dafb' },
-  { name: 'Node.js / Express',       pct: 85, cat: 'Backend',      color: '#86efac' },
-  { name: 'Spring Boot',             pct: 80, cat: 'Backend',      color: '#6ee7b7' },
-  { name: 'PostgreSQL / MySQL',      pct: 85, cat: 'Database',     color: '#a5b4fc' },
-  { name: 'Laravel / Django',        pct: 78, cat: 'Backend',      color: '#fca5a5' },
   { name: 'JavaScript / TypeScript', pct: 88, cat: 'Language',     color: '#fde68a' },
-  { name: 'Docker / Git',            pct: 75, cat: 'DevOps',       color: '#7dd3fc' },
+  { name: 'Node.js / Express',       pct: 85, cat: 'Backend',      color: '#86efac' },
+  { name: 'PostgreSQL / MySQL',      pct: 85, cat: 'Database',     color: '#a5b4fc' },
+  { name: 'Spring Boot',             pct: 80, cat: 'Backend',      color: '#6ee7b7' },
   { name: 'Java / Python',           pct: 80, cat: 'Language',     color: '#c4b5fd' },
+  { name: 'Oracle DB',               pct: 78, cat: 'Database',     color: '#f97316' },
+  { name: 'MongoDB',                 pct: 76, cat: 'NoSQL',        color: '#4ade80' },
+  { name: 'Laravel / Django',        pct: 78, cat: 'Backend',      color: '#fca5a5' },
+  { name: 'Redis',                   pct: 72, cat: 'Cache',        color: '#fb7185' },
+  { name: 'Docker / Kubernetes',     pct: 75, cat: 'DevOps',       color: '#7dd3fc' },
+  { name: 'Neo4j / GraphQL',         pct: 68, cat: 'Graph/API',    color: '#e879f9' },
 ];
 
 function AnimatedBar({ skill, visible, index }) {
   return (
-    <div className={`reveal delay-${Math.min(index + 1, 6)}`} style={{ marginBottom: '22px' }}>
+    <div className={`reveal delay-${Math.min(index + 1, 6)}`} style={{ marginBottom: '20px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{
@@ -68,10 +72,43 @@ export default function Skills() {
   }, []);
 
   const stackGroups = [
-    { label: 'Langages', items: skills.languages, icon: '{ }', color: '#fde68a' },
-    { label: 'Frameworks', items: skills.frameworks, icon: '⬡', color: '#a5b4fc' },
-    { label: 'Bases de Données', items: skills.databases, icon: '◈', color: '#86efac' },
-    { label: 'Outils & Méthodes', items: skills.tools, icon: '⚙', color: '#7dd3fc' },
+    {
+      label: 'Langages',
+      items: skills.languages,
+      icon: '{ }',
+      color: '#fde68a',
+    },
+    {
+      label: 'Frameworks',
+      items: skills.frameworks,
+      icon: '⬡',
+      color: '#a5b4fc',
+    },
+    {
+      label: 'Bases de Données',
+      // Merge existing + new DB skills
+      items: [
+        ...(skills.databases || []),
+        'Oracle DB', 'MongoDB', 'Neo4j', 'Redis',
+      ].filter((v, i, a) => a.indexOf(v) === i), // deduplicate
+      icon: '◈',
+      color: '#86efac',
+    },
+    {
+      label: 'API & Intégration',
+      items: ['REST API', 'GraphQL', 'WebSockets', 'Swagger / OpenAPI', 'JWT / OAuth2'],
+      icon: '⇌',
+      color: '#f97316',
+    },
+    {
+      label: 'Outils & DevOps',
+      items: [
+        ...(skills.tools || []),
+        'Docker', 'Kubernetes', 'CI/CD', 'Git / GitHub', 'Linux',
+      ].filter((v, i, a) => a.indexOf(v) === i),
+      icon: '⚙',
+      color: '#7dd3fc',
+    },
   ];
 
   return (
@@ -179,7 +216,7 @@ export default function Skills() {
             }}>∞</div>
             <p className="section-label" style={{ color: '#7dd3fc', marginBottom: '10px' }}>En apprentissage</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {['Cybersécurité', 'Cloud AWS', 'DevOps', 'IA / ML'].map(s => (
+              {['Cybersécurité', 'Cloud AWS', 'Kafka / RabbitMQ', 'IA / ML', 'Terraform', 'Microservices'].map(s => (
                 <span key={s} style={{
                   fontFamily: 'var(--font-mono)', fontSize: '9px',
                   padding: '4px 12px',
