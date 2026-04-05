@@ -35,10 +35,7 @@ export default function Navbar() {
   const nav = (e, href) => {
     e.preventDefault();
     setMenuOpen(false);
-    if (!href || href === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
+    if (!href || href === '#') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -48,15 +45,11 @@ export default function Navbar() {
         position: 'fixed', top: 0, left: 0, right: 0,
         zIndex: 1000,
         transition: 'all .45s cubic-bezier(.16,1,.3,1)',
-        background: scrolled
-          ? 'rgba(3,3,10,0.92)'
-          : 'transparent',
+        background: scrolled ? 'rgba(8,6,10,0.90)' : 'transparent',
         backdropFilter: scrolled ? 'blur(28px) saturate(160%)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(28px) saturate(160%)' : 'none',
-        borderBottom: scrolled
-          ? '1px solid rgba(201,168,76,0.14)'
-          : '1px solid transparent',
-        boxShadow: scrolled ? '0 12px 48px rgba(0,0,0,0.5)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(232,99,154,0.14)' : '1px solid transparent',
+        boxShadow: scrolled ? '0 12px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(232,99,154,0.04) inset' : 'none',
       }}>
         <div style={{
           maxWidth: '1500px', margin: '0 auto',
@@ -66,72 +59,36 @@ export default function Navbar() {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
 
-          {/* ── LOGO / MONOGRAM ── */}
+          {/* ── LOGO ── */}
           <button
             onClick={(e) => nav(e, null)}
-            style={{
-              background: 'none', border: 'none', padding: 0,
-              cursor: 'pointer', flexShrink: 0, display: 'flex',
-              alignItems: 'center', gap: '14px',
-            }}
+            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '14px' }}
           >
-            {/* Geometric monogram */}
-            <div style={{
-              width: '48px', height: '48px',
-              border: '1.5px solid rgba(201,168,76,0.6)',
-              position: 'relative',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              transition: 'border-color .3s, box-shadow .3s',
-            }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'rgba(201,168,76,1)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(201,168,76,0.2)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(201,168,76,0.6)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              {/* Corner accents */}
-              <div style={{ position: 'absolute', top: '-2px', left: '-2px', width: '8px', height: '8px', borderTop: '2px solid var(--gold)', borderLeft: '2px solid var(--gold)' }} />
-              <div style={{ position: 'absolute', top: '-2px', right: '-2px', width: '8px', height: '8px', borderTop: '2px solid var(--gold)', borderRight: '2px solid var(--gold)' }} />
-              <div style={{ position: 'absolute', bottom: '-2px', left: '-2px', width: '8px', height: '8px', borderBottom: '2px solid var(--gold)', borderLeft: '2px solid var(--gold)' }} />
-              <div style={{ position: 'absolute', bottom: '-2px', right: '-2px', width: '8px', height: '8px', borderBottom: '2px solid var(--gold)', borderRight: '2px solid var(--gold)' }} />
-              <span style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '18px', fontWeight: 300,
-                color: 'var(--gold)',
-                letterSpacing: '0.05em',
-                lineHeight: 1,
-              }}>
-                {/* Initials from personal data — fallback "AH" */}
-                {personal?.initials ?? 'AH'}
-              </span>
-            </div>
+  
 
-            {/* Name text (hidden on small screens) */}
+            {/* Name */}
             <div className="logo-text" style={{ lineHeight: 1.2 }}>
               <p style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '15px', fontWeight: 300,
+                fontSize: '15px', fontWeight: 400,
                 color: 'var(--white)', margin: 0,
-                letterSpacing: '0.12em', textTransform: 'uppercase',
+                letterSpacing: '0.1em', textTransform: 'uppercase',
               }}>
-                {personal?.name ?? 'Ahmed H.'}
+                {personal?.name ?? 'Assia H.'}
               </p>
               <p style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '9px', fontWeight: 400,
-                color: 'var(--gold)', margin: 0,
-                letterSpacing: '0.28em', textTransform: 'uppercase',
-                opacity: 0.8,
+                color: 'var(--rose)', margin: 0,
+                letterSpacing: '0.26em', textTransform: 'uppercase',
+                opacity: 0.9,
               }}>
-                {personal?.title ?? 'Développeur Full Stack'}
+                {personal?.title ?? 'Ingénieure Informatique'}
               </p>
             </div>
           </button>
 
-          {/* ── LIENS DESKTOP ── */}
+          {/* ── DESKTOP LINKS ── */}
           <div className="nav-desktop" style={{ display: 'flex', gap: '0', alignItems: 'center' }}>
             {LINKS.map(({ href, label, num }) => {
               const isActive = active === href;
@@ -140,51 +97,47 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   onClick={(e) => nav(e, href)}
-                  className="nav-link"
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '10px',
                     letterSpacing: '0.18em',
                     textTransform: 'uppercase',
-                    color: isActive ? 'var(--gold)' : 'rgba(255,255,255,0.55)',
+                    color: isActive ? 'var(--rose)' : 'rgba(253,240,246,0.52)',
                     textDecoration: 'none',
                     cursor: 'none',
                     position: 'relative',
-                    padding: '8px 20px',
+                    padding: '8px 18px',
                     transition: 'color .3s ease',
                     display: 'flex', flexDirection: 'column',
                     alignItems: 'center', gap: '3px',
                   }}
+                  onMouseEnter={e => { if (!isActive) e.currentTarget.style.color = 'var(--rose-light)'; }}
+                  onMouseLeave={e => { if (!isActive) e.currentTarget.style.color = 'rgba(253,240,246,0.52)'; }}
                 >
                   <span style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '7px',
-                    color: isActive ? 'rgba(201,168,76,0.6)' : 'rgba(255,255,255,0.2)',
-                    letterSpacing: '0.1em',
-                    transition: 'color .3s',
+                    fontFamily: 'var(--font-mono)', fontSize: '7px',
+                    color: isActive ? 'rgba(232,99,154,0.6)' : 'rgba(253,240,246,0.2)',
+                    letterSpacing: '0.1em', transition: 'color .3s',
                   }}>{num}</span>
                   {label}
-                  {/* Soulignement animé */}
+                  {/* Active underline */}
                   <div style={{
                     position: 'absolute', bottom: 0, left: '50%',
                     transform: 'translateX(-50%)',
                     height: '1.5px',
                     width: isActive ? '60%' : '0%',
-                    background: 'linear-gradient(90deg, transparent, var(--gold), transparent)',
+                    background: 'linear-gradient(90deg, transparent, var(--rose), transparent)',
                     transition: 'width .4s cubic-bezier(.16,1,.3,1)',
+                    boxShadow: '0 0 6px rgba(232,99,154,0.5)',
                   }} />
                 </a>
               );
             })}
 
-            {/* Séparateur */}
-            <div style={{
-              width: '1px', height: '28px',
-              background: 'rgba(201,168,76,0.2)',
-              margin: '0 12px',
-            }} />
+            {/* Separator */}
+            <div style={{ width: '1px', height: '28px', background: 'rgba(232,99,154,0.2)', margin: '0 10px' }} />
 
-            {/* Bouton CV */}
+            {/* CV button */}
             <a
               href={personal.cv}
               target="_blank"
@@ -192,26 +145,29 @@ export default function Navbar() {
               style={{
                 display: 'flex', alignItems: 'center', gap: '8px',
                 padding: '10px 24px',
-                border: '1px solid rgba(201,168,76,0.5)',
-                color: 'var(--gold)',
+                border: '1px solid rgba(232,99,154,0.45)',
+                color: 'var(--rose)',
                 fontFamily: 'var(--font-mono)',
                 fontSize: '10px',
                 letterSpacing: '0.2em',
                 textTransform: 'uppercase',
                 textDecoration: 'none',
                 position: 'relative', overflow: 'hidden',
-                transition: 'border-color .3s, color .3s',
+                transition: 'all .3s ease',
                 cursor: 'none',
+                background: 'transparent',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--gold)';
-                e.currentTarget.style.background = 'rgba(201,168,76,0.08)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(201,168,76,0.15)';
+                e.currentTarget.style.borderColor = 'var(--rose)';
+                e.currentTarget.style.background = 'rgba(232,99,154,0.10)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(232,99,154,0.18)';
+                e.currentTarget.style.color = 'var(--rose-light)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(201,168,76,0.5)';
+                e.currentTarget.style.borderColor = 'rgba(232,99,154,0.45)';
                 e.currentTarget.style.background = 'transparent';
                 e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.color = 'var(--rose)';
               }}
             >
               <span>Télécharger CV</span>
@@ -225,8 +181,7 @@ export default function Navbar() {
             className="burger-btn"
             aria-label="Menu"
             style={{
-              display: 'none',
-              background: 'none', border: 'none', cursor: 'none',
+              display: 'none', background: 'none', border: 'none', cursor: 'none',
               flexDirection: 'column', gap: '6px', padding: '8px',
               position: 'relative', width: '44px', height: '44px',
               alignItems: 'center', justifyContent: 'center',
@@ -237,7 +192,7 @@ export default function Navbar() {
                 display: 'block',
                 width: i === 1 ? (menuOpen ? '24px' : '16px') : '24px',
                 height: '1.5px',
-                background: 'var(--gold)',
+                background: 'linear-gradient(90deg, var(--rose), var(--mauve))',
                 transition: 'all .35s cubic-bezier(.16,1,.3,1)',
                 transformOrigin: 'center',
                 transform: menuOpen
@@ -245,75 +200,57 @@ export default function Navbar() {
                   : i === 2 ? 'translateY(-7.5px) rotate(-45deg)'
                   : 'scaleX(0)'
                   : 'none',
-                boxShadow: '0 0 6px rgba(201,168,76,0.5)',
+                boxShadow: '0 0 6px rgba(232,99,154,0.5)',
               }} />
             ))}
           </button>
         </div>
 
-        {/* ── MENU MOBILE ── */}
+        {/* ── MOBILE MENU ── */}
         <div style={{
           overflow: 'hidden',
           maxHeight: menuOpen ? '520px' : '0',
           transition: 'max-height .5s cubic-bezier(.16,1,.3,1)',
-          background: 'rgba(3,3,10,0.98)',
+          background: 'rgba(8,6,10,0.98)',
           backdropFilter: 'blur(28px)',
-          borderTop: menuOpen ? '1px solid rgba(201,168,76,0.12)' : 'none',
+          borderTop: menuOpen ? '1px solid rgba(232,99,154,0.12)' : 'none',
         }}>
           <div style={{ padding: '32px 6vw 40px', display: 'flex', flexDirection: 'column', gap: '0' }}>
             {LINKS.map(({ href, label, num }, i) => (
               <a
-                key={href}
-                href={href}
-                onClick={(e) => nav(e, href)}
+                key={href} href={href} onClick={(e) => nav(e, href)}
                 style={{
                   display: 'flex', alignItems: 'center', gap: '18px',
                   padding: '14px 0',
-                  borderBottom: i < LINKS.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                  borderBottom: i < LINKS.length - 1 ? '1px solid rgba(232,99,154,0.08)' : 'none',
                   textDecoration: 'none',
                   transition: 'padding-left .3s',
                 }}
                 onMouseEnter={e => e.currentTarget.style.paddingLeft = '8px'}
                 onMouseLeave={e => e.currentTarget.style.paddingLeft = '0'}
               >
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(232,99,154,0.4)', minWidth: '24px' }}>{num}</span>
                 <span style={{
-                  fontFamily: 'var(--font-mono)', fontSize: '10px',
-                  color: 'rgba(201,168,76,0.4)', minWidth: '24px',
-                }}>{num}</span>
-                <span style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '13px',
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: active === href ? 'var(--gold)' : 'rgba(255,255,255,0.7)',
-                }}>
-                  {label}
-                </span>
+                  fontFamily: 'var(--font-mono)', fontSize: '13px',
+                  letterSpacing: '0.18em', textTransform: 'uppercase',
+                  color: active === href ? 'var(--rose)' : 'rgba(253,240,246,0.7)',
+                }}>{label}</span>
                 {active === href && (
-                  <div style={{
-                    marginLeft: 'auto',
-                    width: '4px', height: '4px', borderRadius: '50%',
-                    background: 'var(--gold)',
-                    boxShadow: '0 0 8px rgba(201,168,76,0.8)',
-                  }} />
+                  <div style={{ marginLeft: 'auto', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--rose)', boxShadow: '0 0 8px rgba(232,99,154,0.8)' }} />
                 )}
               </a>
             ))}
 
             <a
-              href={personal.cv}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={personal.cv} target="_blank" rel="noopener noreferrer"
               style={{
                 marginTop: '28px', alignSelf: 'flex-start',
                 display: 'flex', alignItems: 'center', gap: '10px',
                 padding: '12px 28px',
-                border: '1px solid rgba(201,168,76,0.5)',
-                color: 'var(--gold)',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
+                border: '1px solid rgba(232,99,154,0.45)',
+                color: 'var(--rose)',
+                fontFamily: 'var(--font-mono)', fontSize: '10px',
+                letterSpacing: '0.22em', textTransform: 'uppercase',
                 textDecoration: 'none',
               }}
             >
@@ -324,16 +261,8 @@ export default function Navbar() {
         </div>
 
         <style>{`
-          @media (max-width: 1100px) {
-            .logo-text { display: none !important; }
-          }
-          @media (max-width: 900px) {
-            .nav-desktop { display: none !important; }
-            .burger-btn  { display: flex !important; }
-          }
-          .nav-link:hover {
-            color: var(--white) !important;
-          }
+          @media (max-width: 1100px) { .logo-text { display: none !important; } }
+          @media (max-width: 900px)  { .nav-desktop { display: none !important; } .burger-btn { display: flex !important; } }
         `}</style>
       </nav>
     </>

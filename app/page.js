@@ -10,6 +10,16 @@ import Certifications from './components/Certifications';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 
+// Rose divider line
+function Divider() {
+  return (
+    <div style={{
+      height: '1px',
+      background: 'linear-gradient(90deg, transparent, rgba(232,99,154,0.22), rgba(192,132,184,0.12), transparent)',
+    }} />
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -19,17 +29,17 @@ export default function Home() {
       <Navbar />
       <main style={{ position: 'relative', zIndex: 1 }}>
         <Hero />
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent)' }} />
+        <Divider />
         <About />
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent)' }} />
+        <Divider />
         <Experience />
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent)' }} />
+        <Divider />
         <Projects />
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent)' }} />
+        <Divider />
         <Certifications />
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent)' }} />
+        <Divider />
         <Skills />
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent)' }} />
+        <Divider />
         <Contact />
       </main>
     </>
