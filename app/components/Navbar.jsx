@@ -48,8 +48,8 @@ export default function Navbar() {
         background: scrolled ? 'rgba(8,6,10,0.90)' : 'transparent',
         backdropFilter: scrolled ? 'blur(28px) saturate(160%)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(28px) saturate(160%)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(232,99,154,0.14)' : '1px solid transparent',
-        boxShadow: scrolled ? '0 12px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(232,99,154,0.04) inset' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(192,53,94,0.14)' : '1px solid transparent',
+        boxShadow: scrolled ? '0 12px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(192,53,94,0.04) inset' : 'none',
       }}>
         <div style={{
           maxWidth: '1500px', margin: '0 auto',
@@ -64,8 +64,7 @@ export default function Navbar() {
             onClick={(e) => nav(e, null)}
             style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', gap: '14px' }}
           >
-  
-
+            
             {/* Name */}
             <div className="logo-text" style={{ lineHeight: 1.2 }}>
               <p style={{
@@ -116,7 +115,7 @@ export default function Navbar() {
                 >
                   <span style={{
                     fontFamily: 'var(--font-mono)', fontSize: '7px',
-                    color: isActive ? 'rgba(232,99,154,0.6)' : 'rgba(253,240,246,0.2)',
+                    color: isActive ? 'rgba(192,53,94,0.6)' : 'rgba(253,240,246,0.2)',
                     letterSpacing: '0.1em', transition: 'color .3s',
                   }}>{num}</span>
                   {label}
@@ -128,14 +127,14 @@ export default function Navbar() {
                     width: isActive ? '60%' : '0%',
                     background: 'linear-gradient(90deg, transparent, var(--rose), transparent)',
                     transition: 'width .4s cubic-bezier(.16,1,.3,1)',
-                    boxShadow: '0 0 6px rgba(232,99,154,0.5)',
+                    boxShadow: '0 0 6px rgba(192,53,94,0.5)',
                   }} />
                 </a>
               );
             })}
 
             {/* Separator */}
-            <div style={{ width: '1px', height: '28px', background: 'rgba(232,99,154,0.2)', margin: '0 10px' }} />
+            <div style={{ width: '1px', height: '28px', background: 'rgba(192,53,94,0.2)', margin: '0 10px' }} />
 
             {/* CV button */}
             <a
@@ -145,7 +144,7 @@ export default function Navbar() {
               style={{
                 display: 'flex', alignItems: 'center', gap: '8px',
                 padding: '10px 24px',
-                border: '1px solid rgba(232,99,154,0.45)',
+                border: '1px solid rgba(192,53,94,0.45)',
                 color: 'var(--rose)',
                 fontFamily: 'var(--font-mono)',
                 fontSize: '10px',
@@ -159,12 +158,12 @@ export default function Navbar() {
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'var(--rose)';
-                e.currentTarget.style.background = 'rgba(232,99,154,0.10)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(232,99,154,0.18)';
+                e.currentTarget.style.background = 'rgba(192,53,94,0.10)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(192,53,94,0.18)';
                 e.currentTarget.style.color = 'var(--rose-light)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(232,99,154,0.45)';
+                e.currentTarget.style.borderColor = 'rgba(192,53,94,0.45)';
                 e.currentTarget.style.background = 'transparent';
                 e.currentTarget.style.boxShadow = 'none';
                 e.currentTarget.style.color = 'var(--rose)';
@@ -200,7 +199,7 @@ export default function Navbar() {
                   : i === 2 ? 'translateY(-7.5px) rotate(-45deg)'
                   : 'scaleX(0)'
                   : 'none',
-                boxShadow: '0 0 6px rgba(232,99,154,0.5)',
+                boxShadow: '0 0 6px rgba(192,53,94,0.5)',
               }} />
             ))}
           </button>
@@ -213,7 +212,7 @@ export default function Navbar() {
           transition: 'max-height .5s cubic-bezier(.16,1,.3,1)',
           background: 'rgba(8,6,10,0.98)',
           backdropFilter: 'blur(28px)',
-          borderTop: menuOpen ? '1px solid rgba(232,99,154,0.12)' : 'none',
+          borderTop: menuOpen ? '1px solid rgba(192,53,94,0.12)' : 'none',
         }}>
           <div style={{ padding: '32px 6vw 40px', display: 'flex', flexDirection: 'column', gap: '0' }}>
             {LINKS.map(({ href, label, num }, i) => (
@@ -222,21 +221,21 @@ export default function Navbar() {
                 style={{
                   display: 'flex', alignItems: 'center', gap: '18px',
                   padding: '14px 0',
-                  borderBottom: i < LINKS.length - 1 ? '1px solid rgba(232,99,154,0.08)' : 'none',
+                  borderBottom: i < LINKS.length - 1 ? '1px solid rgba(192,53,94,0.08)' : 'none',
                   textDecoration: 'none',
                   transition: 'padding-left .3s',
                 }}
                 onMouseEnter={e => e.currentTarget.style.paddingLeft = '8px'}
                 onMouseLeave={e => e.currentTarget.style.paddingLeft = '0'}
               >
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(232,99,154,0.4)', minWidth: '24px' }}>{num}</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(192,53,94,0.4)', minWidth: '24px' }}>{num}</span>
                 <span style={{
                   fontFamily: 'var(--font-mono)', fontSize: '13px',
                   letterSpacing: '0.18em', textTransform: 'uppercase',
                   color: active === href ? 'var(--rose)' : 'rgba(253,240,246,0.7)',
                 }}>{label}</span>
                 {active === href && (
-                  <div style={{ marginLeft: 'auto', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--rose)', boxShadow: '0 0 8px rgba(232,99,154,0.8)' }} />
+                  <div style={{ marginLeft: 'auto', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--rose)', boxShadow: '0 0 8px rgba(192,53,94,0.8)' }} />
                 )}
               </a>
             ))}
@@ -247,7 +246,7 @@ export default function Navbar() {
                 marginTop: '28px', alignSelf: 'flex-start',
                 display: 'flex', alignItems: 'center', gap: '10px',
                 padding: '12px 28px',
-                border: '1px solid rgba(232,99,154,0.45)',
+                border: '1px solid rgba(192,53,94,0.45)',
                 color: 'var(--rose)',
                 fontFamily: 'var(--font-mono)', fontSize: '10px',
                 letterSpacing: '0.22em', textTransform: 'uppercase',

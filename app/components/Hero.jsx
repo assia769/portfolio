@@ -44,7 +44,7 @@ function CodeBlock({ visible }) {
     rose:  'var(--rose)',
     str:   'var(--rose-light)',
     white: 'var(--white)',
-    prop:  'rgba(232,99,154,0.65)',
+    prop:  'rgba(192,53,94,0.65)',
     dim:   'rgba(253,240,246,0.28)',
     blue:  '#a5d8ff',
     green: '#b9f0c0',
@@ -59,7 +59,7 @@ function CodeBlock({ visible }) {
           transition: `opacity .5s ease ${line.delay}ms, transform .5s ease ${line.delay}ms`,
           display: 'flex', flexWrap: 'wrap',
         }}>
-          <span style={{ color: 'rgba(232,99,154,0.18)', marginRight: '16px', userSelect: 'none', width: '20px', textAlign: 'right', fontSize: '10px' }}>
+          <span style={{ color: 'rgba(192,53,94,0.18)', marginRight: '16px', userSelect: 'none', width: '20px', textAlign: 'right', fontSize: '10px' }}>
             {i + 1}
           </span>
           {line.content.map((part, j) => (
@@ -160,10 +160,10 @@ export default function Hero() {
       }}>
 
         {/* ── FLOATING ORBS — rose palette ── */}
-        <Orb size="420px" top="-8%"  left="-6%"  color="rgba(232,99,154,0.45)"  delay={0}   blur="130px" />
-        <Orb size="320px" top="62%"  left="55%"  color="rgba(192,132,184,0.35)" delay={1.5} blur="110px" />
-        <Orb size="220px" top="20%"  left="72%"  color="rgba(232,99,154,0.28)"  delay={3}   blur="80px" />
-        <Orb size="260px" top="78%"  left="-8%"  color="rgba(184,64,110,0.25)"  delay={2}   blur="90px" />
+        <Orb size="420px" top="-8%"  left="-6%"  color="rgba(192,53,94,0.45)"  delay={0}   blur="130px" />
+        <Orb size="320px" top="62%"  left="55%"  color="rgba(139,74,139,0.35)" delay={1.5} blur="110px" />
+        <Orb size="220px" top="20%"  left="72%"  color="rgba(192,53,94,0.28)"  delay={3}   blur="80px" />
+        <Orb size="260px" top="78%"  left="-8%"  color="rgba(138,31,66,0.25)"  delay={2}   blur="90px" />
 
         {/* ── LEFT — TEXT ── */}
         <div style={{ position: 'relative', zIndex: 1 }}>
@@ -263,7 +263,7 @@ export default function Hero() {
           <div style={{
             display: 'flex', gap: '36px', marginTop: '56px',
             paddingTop: '36px',
-            borderTop: '1px solid rgba(232,99,154,0.12)',
+            borderTop: '1px solid rgba(192,53,94,0.12)',
             opacity: loaded ? 1 : 0,
             transition: 'all 1s cubic-bezier(.16,1,.3,1) 1s',
           }}>
@@ -285,7 +285,7 @@ export default function Hero() {
                   backgroundClip: 'text',
                   lineHeight: 1,
                   marginBottom: '4px',
-                  filter: 'drop-shadow(0 0 12px rgba(232,99,154,0.35))',
+                  filter: 'drop-shadow(0 0 12px rgba(192,53,94,0.35))',
                 }}>{n}</div>
                 <div style={{
                   fontSize: '9px', color: 'var(--white-dimmer)',
@@ -308,14 +308,14 @@ export default function Hero() {
           <div style={{
             position: 'absolute', top: '-40px', right: '-40px',
             width: '180px', height: '180px',
-            border: '1px solid rgba(232,99,154,0.14)',
+            border: '1px solid rgba(192,53,94,0.14)',
             borderRadius: '50%',
             animation: 'float 6s ease-in-out infinite',
           }} />
           <div style={{
             position: 'absolute', top: '-20px', right: '-20px',
             width: '120px', height: '120px',
-            border: '1px solid rgba(192,132,184,0.16)',
+            border: '1px solid rgba(139,74,139,0.16)',
             borderRadius: '50%',
             animation: 'float 4s ease-in-out 1s infinite',
           }} />
@@ -329,7 +329,7 @@ export default function Hero() {
             {/* Top bar */}
             <div style={{
               padding: '14px 20px',
-              borderBottom: '1px solid rgba(232,99,154,0.08)',
+              borderBottom: '1px solid rgba(192,53,94,0.08)',
               display: 'flex', alignItems: 'center', gap: '8px',
               background: 'rgba(255,255,255,0.015)',
             }}>
@@ -349,7 +349,7 @@ export default function Hero() {
             {/* Bottom status bar */}
             <div style={{
               padding: '10px 20px',
-              borderTop: '1px solid rgba(232,99,154,0.06)',
+              borderTop: '1px solid rgba(192,53,94,0.06)',
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
               background: 'rgba(255,255,255,0.01)',
             }}>
@@ -371,9 +371,9 @@ export default function Hero() {
             padding: '10px 16px',
             background: 'rgba(13,11,16,0.92)',
             backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(232,99,154,0.25)',
+            border: '1px solid rgba(192,53,94,0.25)',
             fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--rose-light)',
-            boxShadow: '0 8px 30px rgba(0,0,0,0.4), 0 0 15px rgba(232,99,154,0.1)',
+            boxShadow: '0 8px 30px rgba(0,0,0,0.4), 0 0 15px rgba(192,53,94,0.1)',
             animation: 'float 4s ease-in-out 0.5s infinite',
             whiteSpace: 'nowrap',
           }}>
@@ -385,7 +385,7 @@ export default function Hero() {
             padding: '8px 14px',
             background: 'rgba(13,11,16,0.92)',
             backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(192,132,184,0.28)',
+            border: '1px solid rgba(139,74,139,0.28)',
             fontFamily: 'var(--font-mono)', fontSize: '10px',
             color: 'var(--mauve)',
             boxShadow: '0 8px 30px rgba(0,0,0,0.4)',
